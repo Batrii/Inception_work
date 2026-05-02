@@ -1,0 +1,56 @@
+services:
+  mariadb:
+    build: /home/bnafiai/Desktop/inception/srcs/requirements/mariadb
+    container_name: mariadb
+    restart: always
+    env_file: .env
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - inception_network
+
+  nginx:
+    build: /home/bnafiai/Desktop/inception/srcs/requirements/nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - mariadb
+      - wordpress
+    volumes:
+      - wordpress_data:/var/www/html
+    networks:
+      - inception_network
+
+  wordpress:
+    build: /home/bnafiai/Desktop/inception/srcs/requirements/wordpress
+    container_name: wordpress
+    restart: always
+    env_file: .env
+    depends_on:
+      - mariadb
+    volumes:
+      - wordpress_data:/var/www/html
+    networks:
+      - inception_network
+
+volumes:
+  mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/bnafiai/data/mariadb
+
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/bnafiai/data/wordpress
+
+networks:
+  inception_network:
+    driver: bridge
