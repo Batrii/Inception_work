@@ -32,14 +32,14 @@ fi
 if ! wp core is-installed --allow-root; then
     wp core install \
         --allow-root \
-        --url="https://localhost" \
+        --url="https://$DOMAIN_NAME" \
         --title="Inception" \
-        --admin_user="badr" \
-        --admin_password="badr123" \
-        --admin_email="badr@edsad.com"
+        --admin_user="$WORDPRESS_ADMIN_USER" \
+        --admin_password="$WORDPRESS_ADMIN_PASSWORD" \
+        --admin_email="$WORDPRESS_ADMIN_EMAIL"
     echo "Creating second user..."
-    wp user create user42 user42@test.com \
-        --user_pass="user42pass" \
+    wp user create  "$WORDPRESS_USER_USER" "$WORDPRESS_USER_EMAIL" \
+        --user_pass="$WORDPRESS_USER_PASSWORD" \
         --role=author \
         --allow-root
 fi
