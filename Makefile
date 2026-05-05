@@ -19,7 +19,11 @@ build:
 	$(DOCKER_COMPOSE) build --no-cache
 
 ps:
-	$(DOCKER_COMPOSE) ps
+	$(DOCKER) ps -a
+
+remove:
+	sudo rm -rf /home/bnafiai/data/wordpress/*
+	sudo rm -rf /home/bnafiai/data/mariadb/*
 
 fclean:
 	$(DOCKER_COMPOSE) down --rmi all -v --remove-orphans
