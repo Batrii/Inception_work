@@ -21,6 +21,9 @@ build:
 ps:
 	$(DOCKER) ps -a
 
+clean:
+	$(DOCKER) system prune -a
+
 remove:
 	sudo rm -rf /home/bnafiai/data/wordpress/*
 	sudo rm -rf /home/bnafiai/data/mariadb/*

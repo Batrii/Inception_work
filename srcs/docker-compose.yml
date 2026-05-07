@@ -1,6 +1,7 @@
 services:
   mariadb:
     build: /home/bnafiai/Desktop/inception/srcs/requirements/mariadb
+    image: mariadb
     container_name: mariadb
     restart: always
     env_file: .env
@@ -11,6 +12,7 @@ services:
 
   nginx:
     build: /home/bnafiai/Desktop/inception/srcs/requirements/nginx
+    image: nginx
     container_name: nginx
     restart: always
     ports:
@@ -25,6 +27,7 @@ services:
 
   wordpress:
     build: /home/bnafiai/Desktop/inception/srcs/requirements/wordpress
+    image: wordpress
     container_name: wordpress
     restart: always
     env_file: .env
