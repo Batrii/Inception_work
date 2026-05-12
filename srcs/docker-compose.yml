@@ -1,6 +1,6 @@
 services:
   mariadb:
-    build: /home/bnafiai/Desktop/inception/srcs/requirements/mariadb
+    build: requirements/mariadb
     image: mariadb
     container_name: mariadb
     restart: always
@@ -11,7 +11,7 @@ services:
       - inception_network
 
   nginx:
-    build: /home/bnafiai/Desktop/inception/srcs/requirements/nginx
+    build: requirements/nginx
     image: nginx
     container_name: nginx
     restart: always
@@ -26,7 +26,7 @@ services:
       - inception_network
 
   wordpress:
-    build: /home/bnafiai/Desktop/inception/srcs/requirements/wordpress
+    build: requirements/wordpress
     image: wordpress
     container_name: wordpress
     restart: always
